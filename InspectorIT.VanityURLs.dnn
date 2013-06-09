@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <dotnetnuke type="Package" version="5.0">
   <packages>
-    <package name="InspectorIT.VanityURLs" type="Module" version="01.00.22">
+    <package name="InspectorIT.VanityURLs" type="Module" version="1.0.144.0">
       <friendlyName>VanityURLs</friendlyName>
       <description>Enables custom urls to be created for pages and pages with querystring values.</description>
       <iconFile>DesktopModules/InspectorIT/VanityUrls/images/emblem-symbolic-link.png</iconFile>

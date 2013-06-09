@@ -1,4 +1,17 @@
-﻿using System.Collections.Generic;
+﻿// ***********************************************************************
+// Assembly         : VanityURLs
+// Author           : Jonathan Sheely
+// Created          : 01-10-2013
+//
+// Last Modified By : Jonathan Sheely
+// Last Modified On : 02-06-2013
+// ***********************************************************************
+// <copyright file="VanityUrlsWS.asmx.cs" company="InspectorIT">
+//     Copyright (c) InspectorIT. All rights reserved.
+// </copyright>
+// <summary></summary>
+// ***********************************************************************
+using System.Collections.Generic;
 using System.Web;
 using System.Web.Services;
 using System.Web.Script.Services;
@@ -19,6 +32,10 @@ namespace InspectorIT.VanityURLs
     [System.Web.Script.Services.ScriptService]
     public class VanityUrlsWS : System.Web.Services.WebService
     {
+        /// <summary>
+        /// Gets the vanity urls.
+        /// </summary>
+        /// <returns>List{VanityUrlInfo}.</returns>
         [WebMethod]
         [ScriptMethod(ResponseFormat = ResponseFormat.Json)]
         public List<VanityUrlInfo> GetVanityUrls()
@@ -30,6 +47,10 @@ namespace InspectorIT.VanityURLs
             return null;
         }
 
+        /// <summary>
+        /// Gets the vanity urls XML.
+        /// </summary>
+        /// <returns>List{VanityUrlInfo}.</returns>
         [WebMethod]
         [ScriptMethod(ResponseFormat = ResponseFormat.Xml, UseHttpGet = true)]
         public List<VanityUrlInfo> GetVanityUrlsXml()
@@ -41,6 +62,11 @@ namespace InspectorIT.VanityURLs
             return null;
         }
 
+        /// <summary>
+        /// Saves the URL.
+        /// </summary>
+        /// <param name="VanityUrl">The vanity URL.</param>
+        /// <returns>VanityUrlInfo.</returns>
         [WebMethod]
         [ScriptMethod(ResponseFormat = ResponseFormat.Json)]
         public VanityUrlInfo SaveUrl(VanityUrlInfo VanityUrl)
@@ -53,6 +79,10 @@ namespace InspectorIT.VanityURLs
 
         }
 
+        /// <summary>
+        /// Deletes the URL.
+        /// </summary>
+        /// <param name="VanityUrl">The vanity URL.</param>
         [WebMethod]
         [ScriptMethod(ResponseFormat = ResponseFormat.Json)]
         public void DeleteUrl(VanityUrlInfo VanityUrl)
@@ -64,6 +94,10 @@ namespace InspectorIT.VanityURLs
             
         }
 
+        /// <summary>
+        /// Gets the google tracking types.
+        /// </summary>
+        /// <returns>List{GoogleTrackInfo}.</returns>
         [WebMethod]
         [ScriptMethod(ResponseFormat = ResponseFormat.Json)]
         public List<GoogleTrackInfo> GetGoogleTrackingTypes()
@@ -76,6 +110,10 @@ namespace InspectorIT.VanityURLs
 
         }
 
+        /// <summary>
+        /// Updates the type of the google tracking.
+        /// </summary>
+        /// <param name="googleTrackInfo">The google track info.</param>
         [WebMethod]
         [ScriptMethod(ResponseFormat = ResponseFormat.Json)]
         public void UpdateGoogleTrackingType(GoogleTrackInfo googleTrackInfo)
@@ -87,6 +125,10 @@ namespace InspectorIT.VanityURLs
             }
         }
 
+        /// <summary>
+        /// Removes the type of the google tracking.
+        /// </summary>
+        /// <param name="googleTrackInfo">The google track info.</param>
         [WebMethod]
         [ScriptMethod(ResponseFormat = ResponseFormat.Json)]
         public void RemoveGoogleTrackingType(GoogleTrackInfo googleTrackInfo)
@@ -97,8 +139,12 @@ namespace InspectorIT.VanityURLs
             }
         }
 
-        
 
+
+        /// <summary>
+        /// Validates the authentication.
+        /// </summary>
+        /// <returns><c>true</c> if XXXX, <c>false</c> otherwise</returns>
         private bool ValidateAuthentication()
         {
             if (HttpContext.Current.Request.IsAuthenticated)
@@ -126,7 +172,14 @@ namespace InspectorIT.VanityURLs
 
         }
 
+        /// <summary>
+        /// The _user info
+        /// </summary>
         private UserInfo _userInfo;
+        /// <summary>
+        /// Gets or sets the user info.
+        /// </summary>
+        /// <value>The user info.</value>
         private UserInfo UserInfo
         {
             get { return _userInfo; }
