@@ -1,0 +1,16 @@
+﻿<configuration>
+  <nodes configfile="web.config">
+    <node path="/configuration/configSections/sectionGroup[@name='dotnetnuke']" key="name" action="update" collision="overwrite">
+      <section name="moduleFriendlyUrl" requirePermission="false" type="DotNetNuke.Framework.Providers.ProviderConfigurationHandler, DotNetNuke" />
+    </node>
+    <node path="/configuration/dotnetnuke"  targetpath="/configuration/dotnetnuke/moduleFriendlyUrl" action="update" collision="ignore">
+      <moduleFriendlyUrl defaultProvider="none" />
+    </node>
+    <node path="/configuration/dotnetnuke/moduleFriendlyUrl" targetpath="/configuration/dotnetnuke/moduleFriendlyUrl/providers" action="update" collision="ignore">
+      <providers />
+    </node>
+    <node path="/configuration/dotnetnuke/moduleFriendlyUrl/providers" action="update" key="name" collision="ignore">
+      <add name="InspectorIT.VanityURLs" type="InspectorIT.VanityURLs.Components.Providers.iFinityProvider, InspectorIT.VanityURLs" />
+    </node>
+  </nodes>
+</configuration>
