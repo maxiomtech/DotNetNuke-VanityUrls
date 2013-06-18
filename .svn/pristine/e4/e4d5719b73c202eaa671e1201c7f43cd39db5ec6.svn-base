@@ -1,7 +1,0 @@
-﻿<configuration>
-  <nodes configfile="web.config">
-    <node path="/configuration/dotnetnuke/moduleFriendlyUrl/providers" action="remove" key="name">
-      <add name="InspectorIT.VanityURLs" type="InspectorIT.VanityURLs.Components.Providers.iFinityProvider, InspectorIT.VanityURLs" />
-    </node>
-  </nodes>
-</configuration>
