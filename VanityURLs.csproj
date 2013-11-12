@@ -48,6 +48,10 @@
       <HintPath>..\..\..\..\..\..\Software\DNN\6.1.4\DotNetNuke_Community_06.01.04_Install\bin\DotNetNuke.dll</HintPath>
       <Private>False</Private>
     </Reference>
+    <Reference Include="DotNetNuke.HttpModules, Version=6.2.1.11, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\bin\DotNetNuke.HttpModules.dll</HintPath>
+    </Reference>
     <Reference Include="DotNetNuke.Web, Version=6.2.5.24, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\..\..\..\..\Software\DNN\6.1.4\DotNetNuke_Community_06.01.04_Install\bin\DotNetNuke.Web.dll</HintPath>
@@ -65,6 +69,7 @@
     <Reference Include="System.Data" />
     <Reference Include="System.Core" />
     <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Web.Abstractions" />
     <Reference Include="System.Web.Extensions" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Drawing" />
@@ -155,6 +160,9 @@
     <Content Include="version.txt" />
     <Content Include="views\Admin.ascx" />
     <Content Include="Includes\StandardProvider.remove.config" />
+    <Content Include="js\VanityUrls.Admin.min.js.map">
+      <DependentUpon>VanityUrls.Admin.js</DependentUpon>
+    </Content>
   </ItemGroup>
   <ItemGroup>
     <Folder Include="BuildScripts\" />

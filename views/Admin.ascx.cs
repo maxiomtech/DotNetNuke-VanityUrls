@@ -20,10 +20,10 @@ namespace InspectorIT.VanityURLs.views
             jQuery.RegisterJQuery(this.Page);
             jQuery.RegisterJQueryUI(this.Page);
 
-            if (DotNetNukeContext.Current.Application.Version.Major >= 7)
-            {
-                ClientResourceManager.RegisterScript(Page, ControlPath + "../js/jquery.autocomplete.js", FileOrder.Js.DefaultPriority + 1);
-            }
+            //if (DotNetNukeContext.Current.Application.Version.Major >= 7)
+            //{
+            //    ClientResourceManager.RegisterScript(Page, ControlPath + "../js/jquery.autocomplete.js", FileOrder.Js.DefaultPriority + 1);
+            //}
         }
         protected void Page_Load(object sender, EventArgs e)
         {

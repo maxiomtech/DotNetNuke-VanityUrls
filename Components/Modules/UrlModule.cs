@@ -60,13 +60,36 @@ namespace InspectorIT.VanityURLs.Components.Modules
                 var app = (HttpApplication)source;
                 var context = app.Context;
                 var myAlias = DotNetNuke.Common.Globals.GetDomainName(app.Request, true);
-                var slashIndex = myAlias.LastIndexOf('/');
-                myAlias = slashIndex > 1 ? myAlias.Substring(0, slashIndex) : "";
 
                 bool doRedirect = false;
-                string redirectLocation = "";//set blank location
+                string redirectLocation = ""; //set blank location
                 string requestUri = context.Request.Url.AbsoluteUri;
                 string scheme = context.Request.Url.Scheme;
+
+                //Taken from the BasicUrlRewriter to skip directly
+                if (context.Request.Url.LocalPath.ToLower().EndsWith("/install/install.aspx")
+                 || context.Request.Url.LocalPath.ToLower().Contains("/install/upgradewizard.aspx")
+                 || context.Request.Url.LocalPath.ToLower().Contains("/install/installwizard.aspx")
+                 || context.Request.Url.LocalPath.ToLower().EndsWith("captcha.aspx")
+                 || context.Request.Url.LocalPath.ToLower().EndsWith("scriptresource.axd")
+                 || context.Request.Url.LocalPath.ToLower().EndsWith("webresource.axd"))
+                {
+                    return;
+                }
+
+                //Strip down the URL slash by slash to get the PortalAlias
+                PortalAliasInfo objPortalAlias;
+                do
+                {
+                    objPortalAlias = PortalAliasController.GetPortalAliasInfo(myAlias);
+                    if (objPortalAlias != null)
+                    {
+                        break;
+                    }
+
+                    int slashIndex = myAlias.LastIndexOf('/');
+                    myAlias = slashIndex > 1 ? myAlias.Substring(0, slashIndex) : "";
+                } while (myAlias.Length > 0);
 
                 string urlWithoutAlias = requestUri.Replace(myAlias, "").Replace(scheme + "://", "");
                 if (urlWithoutAlias.StartsWith("/"))
@@ -86,17 +109,13 @@ namespace InspectorIT.VanityURLs.Components.Modules
                             (urlInfo.ActiveEndDate == null || urlInfo.ActiveEndDate > DateTime.Now))
                         {
 
-
                             doRedirect = true;
                             redirectLocation = scheme + "://" + myAlias + urlInfo.RedirectUrl;
                             //TODO: Test this. Not sure it actaully works
                             VanityUrlController.UpdateLastAccessedDate(urlInfo, portalId);
-                            break;
                         }
-                        else
-                        {
-                            break;
-                        }
+
+                        break;
                     }
                 }
 
@@ -105,7 +124,7 @@ namespace InspectorIT.VanityURLs.Components.Modules
                     context.Response.Redirect(redirectLocation);
                 }
 
-                
+
             }
             catch (Exception ex)
             {

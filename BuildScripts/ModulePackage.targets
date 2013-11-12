@@ -79,8 +79,9 @@
     <!-- Files that will be added to the install package. Note the default exclude collection on each item. -->
     <ItemGroup>
       <InstallInclude Include="**\*.ascx" Exclude="@(DefaultExclude)" />
+      <InstallInclude Include="**\*.config" Exclude="@(DefaultExclude)" />
       <InstallInclude Include="**\*.asmx" Exclude="@(DefaultExclude)" />
-      <InstallInclude Include="**\*.min.css" Exclude="@(DefaultExclude)" />
+      <InstallInclude Include="**\*.css" Exclude="@(DefaultExclude)" />
       <InstallInclude Include="**\*.html" Exclude="@(DefaultExclude)" />
       <InstallInclude Include="**\*.htm" Exclude="@(DefaultExclude)" />
       <InstallInclude Include="**\*.resx" Exclude="@(DefaultExclude)" />
